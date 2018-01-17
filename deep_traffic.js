@@ -4,8 +4,8 @@
 // a few things don't have var in front of them - they update already existing variables the game needs
 // These are probably things I want to tweak a bit, since it's only looking right in front of it now
 lanesSide = 2;
-patchesAhead = 2;
-patchesBehind = 2;
+patchesAhead = 5;
+patchesBehind = 5;
 trainIterations = 10000;
 
 // the number of other autonomous vehicles controlled by your network
@@ -29,13 +29,13 @@ var layer_defs = [];
 
 layer_defs.push({
     type: 'fc',
-    num_neurons: 135,
+    num_neurons: 115,
     activation: 'relu'
 });
 
 layer_defs.push({
     type: 'fc',
-    num_neurons: 100,
+    num_neurons: 90,
     activation: 'relu'
 });
 
@@ -69,7 +69,7 @@ var tdtrainer_options = {
     learning_rate: 0.001, // Tweak this
     momentum: 0.0,  // Tweak this
     batch_size: 64, // Tweak this
-    l2_decay: 0.02  // Re-read on l2 
+    l2_decay: 0.01  // Re-read on l2 
 };
 
 
