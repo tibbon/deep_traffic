@@ -3,14 +3,14 @@
 
 // a few things don't have var in front of them - they update already existing variables the game needs
 // These are probably things I want to tweak a bit, since it's only looking right in front of it now
-lanesSide = 0;
-patchesAhead = 1;
-patchesBehind = 0;
+lanesSide = 2;
+patchesAhead = 2;
+patchesBehind = 2;
 trainIterations = 10000;
 
 // the number of other autonomous vehicles controlled by your network
 // I get the average of these for speed, but they can't collaborate
-otherAgents = 0; // max of 9
+otherAgents = 9; // max of 9
 
 // These don't need changed, except perhaps temporal_window
 var num_inputs = (lanesSide * 2 + 1) * (patchesAhead + patchesBehind);
@@ -27,10 +27,33 @@ var layer_defs = [];
     out_depth: network_size
 });
 
-// Just an initial layer so they show how it works. This is something I need to change!
 layer_defs.push({
     type: 'fc',
-    num_neurons: 1,
+    num_neurons: 135,
+    activation: 'relu'
+});
+
+layer_defs.push({
+    type: 'fc',
+    num_neurons: 100,
+    activation: 'relu'
+});
+
+layer_defs.push({
+    type: 'fc',
+    num_neurons: 50,
+    activation: 'relu'
+});
+
+layer_defs.push({
+    type: 'fc',
+    num_neurons: 25,
+    activation: 'relu'
+});
+
+layer_defs.push({
+    type: 'fc',
+    num_neurons: 10,
     activation: 'relu'
 });
 
@@ -46,7 +69,7 @@ var tdtrainer_options = {
     learning_rate: 0.001, // Tweak this
     momentum: 0.0,  // Tweak this
     batch_size: 64, // Tweak this
-    l2_decay: 0.01  // Re-read on l2 
+    l2_decay: 0.02  // Re-read on l2 
 };
 
 
