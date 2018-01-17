@@ -4,7 +4,7 @@
 // a few things don't have var in front of them - they update already existing variables the game needs
 // These are probably things I want to tweak a bit, since it's only looking right in front of it now
 lanesSide = 2;
-patchesAhead = 5;
+patchesAhead = 15;
 patchesBehind = 5;
 trainIterations = 10000;
 
@@ -30,7 +30,7 @@ var layer_defs = [];
 layer_defs.push({
     type: 'fc',
     num_neurons: 115,
-    activation: 'relu'
+    activation: 'tanh'
 });
 
 layer_defs.push({
@@ -66,7 +66,7 @@ layer_defs.push({
 // These are more advanced tweaks. I bet I can do some hyperparams tuning here. 
 // More at: https://github.com/karpathy/convnetjs/blob/master/build/deepqlearn.js
 var tdtrainer_options = {
-    learning_rate: 0.001, // Tweak this
+    learning_rate: 0.002, // Tweak this
     momentum: 0.0,  // Tweak this
     batch_size: 64, // Tweak this
     l2_decay: 0.01  // Re-read on l2 
